@@ -33,12 +33,15 @@ public class Calculator01 {
                         break;
                     }
                     case '/': {
-                        try {
-                            System.out.println(firstNum + " / " + secondNum + " = " + (firstNum / secondNum));
-                        } catch (ArithmeticException e) {
+                        if (secondNum != 0) {
+                            System.out.println(firstNum + " / " + secondNum + " = " + ((double) firstNum / secondNum));
+                        } else {
                             System.out.println("0으로 나눌 수 없습니다.");
                         }
                         break;
+                    }
+                    default: {
+                        System.out.println("사칙 연산자를 입력해주세요.");
                     }
                 }
             } catch (InputMismatchException e) {
