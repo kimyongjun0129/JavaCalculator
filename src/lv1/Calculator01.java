@@ -19,29 +19,33 @@ public class Calculator01 {
                 int secondNum = scanner.nextInt();
                 scanner.nextLine();
 
-                switch(operator) {
-                    case '+': {
-                        System.out.println(firstNum + " + " + secondNum + " = " + (firstNum + secondNum));
-                        break;
-                    }
-                    case '-': {
-                        System.out.println(firstNum + " - " + secondNum + " = " + (firstNum - secondNum));
-                        break;
-                    }
-                    case '*': {
-                        System.out.println(firstNum + " * " + secondNum + " = " + (firstNum * secondNum));
-                        break;
-                    }
-                    case '/': {
-                        if (secondNum != 0) {
-                            System.out.println(firstNum + " / " + secondNum + " = " + ((double) firstNum / secondNum));
-                        } else {
-                            System.out.println("0으로 나눌 수 없습니다.");
+                if (firstNum < 0 || secondNum < 0) {
+                    System.out.println("양의 정수만 입력하세요");
+                } else {
+                    switch(operator) {
+                        case '+': {
+                            System.out.println(firstNum + " + " + secondNum + " = " + (firstNum + secondNum));
+                            break;
                         }
-                        break;
-                    }
-                    default: {
-                        System.out.println("사칙 연산자를 입력해주세요.");
+                        case '-': {
+                            System.out.println(firstNum + " - " + secondNum + " = " + (firstNum - secondNum));
+                            break;
+                        }
+                        case '*': {
+                            System.out.println(firstNum + " * " + secondNum + " = " + (firstNum * secondNum));
+                            break;
+                        }
+                        case '/': {
+                            if (secondNum != 0) {
+                                System.out.println(firstNum + " / " + secondNum + " = " + ((double) firstNum / secondNum));
+                            } else {
+                                System.out.println("0으로 나눌 수 없습니다.");
+                            }
+                            break;
+                        }
+                        default: {
+                            System.out.println("사칙 연산자를 입력해주세요.");
+                        }
                     }
                 }
             } catch (InputMismatchException e) {

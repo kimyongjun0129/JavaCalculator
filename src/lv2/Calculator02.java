@@ -24,7 +24,6 @@ public class Calculator02 {
                     System.out.println("양의 정수만 입력하세요");
                 } else {
                     Double result = calculator.calculate(firstNum, secondNum, operator);
-                    System.out.println(result);
                     calculator.setResult(result);
                     calculator.getResult();
                 }
