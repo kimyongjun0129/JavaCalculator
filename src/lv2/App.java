@@ -3,7 +3,7 @@ package lv2;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Calculator02 {
+public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
