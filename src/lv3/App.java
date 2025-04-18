@@ -1,12 +1,13 @@
-package lv2;
+package lv3;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class App {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Calculator calculator = new Calculator();
+        Data data = new Data();
 
         while (true) {
             try {
@@ -23,8 +24,8 @@ public class App {
                 if (firstNum < 0 || secondNum < 0) {
                     System.out.println("양의 정수만 입력하세요");
                 } else {
-                    Object result = calculator.calculate(firstNum, secondNum, operator);
-                    calculator.setResult(result);
+                    ArithmeticCalculator<Integer> calculator = new ArithmeticCalculator<>(firstNum, operator, secondNum);
+                    data.setData(calculator.calculate());
                 }
 
             } catch (InputMismatchException e) {
@@ -35,17 +36,24 @@ public class App {
             try {
                 System.out.print("저장된 결과값을 보시겠습니까? (y/아무 키 누르세요) ");
                 if (scanner.nextLine().charAt(0) == 'y') {
-                    calculator.getResult();
+                    System.out.print("몇 이상의 저장값을 조회하시겠습니까? ");
+                    data.getFormatData(scanner.nextInt());
+                    scanner.nextLine();
                 }
-            } catch (StringIndexOutOfBoundsException e) {};
+
+            } catch (StringIndexOutOfBoundsException e) {
+                System.out.println();
+            }
 
             try {
                 System.out.print("첫 번째 결과를 삭제하시겠습니까? (y/아무 키 누르세요) ");
                 if (scanner.nextLine().charAt(0) == 'y') {
-                    calculator.deleteNum();
-                    calculator.getResult();
+                    data.deleteFirstData();
+                    data.getData();
                 }
-            } catch (StringIndexOutOfBoundsException e) {};
+            } catch (StringIndexOutOfBoundsException e) {
+                System.out.println();
+            }
 
             System.out.print("더 계산하시겠습니까? (exit 입력 시 종료) ");
             if (scanner.nextLine().equals("exit")) return;
