@@ -11,19 +11,19 @@ public class App {
         while (true) {
             try {
                 System.out.print("첫 번째 숫자를 입력해주세요 : ");
-                double firstNum = scanner.nextDouble();
+                int firstNum = scanner.nextInt();
 
                 System.out.print("사칙 연산 기호를 입력해주세요 : ");
                 char operator = scanner.next().charAt(0);
 
                 System.out.print("두 번째 숫자를 입력해주세요 : ");
-                double secondNum = scanner.nextDouble();
+                int secondNum = scanner.nextInt();
                 scanner.nextLine();
 
                 if (firstNum < 0 || secondNum < 0) {
                     System.out.println("양의 정수만 입력하세요");
                 } else {
-                    Double result = calculator.calculate(firstNum, secondNum, operator);
+                    Object result = calculator.calculate(firstNum, secondNum, operator);
                     calculator.setResult(result);
                     calculator.getResult();
                 }

@@ -3,13 +3,13 @@ package lv2;
 import java.util.*;
 
 public class Calculator {
-    final private Queue<Double> resultList = new ArrayDeque<>();
+    final private Queue<Object> resultList = new ArrayDeque<>();
 
     public void getResult() {
         System.out.println(resultList);
     }
 
-    public void setResult(Double result) {
+    public void setResult(Object result) {
         if(result != null) resultList.add(result);
     }
 
@@ -21,7 +21,7 @@ public class Calculator {
         }
     }
 
-    public Double calculate(double firstNum, double secondNum, char operator) {
+    public Object calculate(int firstNum, int secondNum, char operator) {
         switch (operator) {
             case '+': {
                 System.out.println(firstNum + " + " + secondNum + " = " + (firstNum + secondNum));
@@ -38,7 +38,7 @@ public class Calculator {
             case '/': {
                 if (secondNum != 0) {
                     System.out.println(firstNum + " / " + secondNum + " = " + ((double) firstNum / secondNum));
-                    return firstNum / secondNum;
+                    return ((double)firstNum) / secondNum;
                 } else {
                     System.out.println("0으로 나눌 수 없습니다.");
                     return null;
