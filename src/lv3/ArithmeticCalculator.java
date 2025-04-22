@@ -1,5 +1,7 @@
 package lv3;
 
+import java.util.Optional;
+
 public class ArithmeticCalculator <T extends Number> {
     // 속성
     Operator op;
@@ -24,36 +26,45 @@ public class ArithmeticCalculator <T extends Number> {
             case '/': {
                 op = Operator.DIVIDE;
             }
+            default: {
+                System.out.println("잘못된 연산자입니다.");
+                op = Operator.NONE;
+            }
         }
         a = firstNum;
         a1 = secondNum;
     }
 
     // 기능
-    public Double calculate() {
+    public Optional<Double> calculate() {
+        double result;
         switch(op) {
             case Operator.PLUS: {
-                double sum = a.intValue() + a1.intValue();
-                System.out.println(a.intValue() + " + " + a1.intValue() + " = " + sum);
-                return sum;
+                result = a.doubleValue() + a1.doubleValue();
+                System.out.println(a.doubleValue() + " + " + a1.doubleValue() + " = " + result);
+                return Optional.of(result);
             }
             case Operator.MINUS: {
-                double minus = a.intValue() - a1.intValue();
-                System.out.println(a.intValue() + " - " + a1.intValue() + " = " + minus);
-                return minus;
+                result = a.doubleValue() - a1.doubleValue();
+                System.out.println(a.doubleValue() + " - " + a1.doubleValue() + " = " + result);
+                return Optional.of(result);
             }
             case Operator.MULTIPLY: {
-                double multi = a.intValue() * a1.intValue();
-                System.out.println(a.intValue() + " * " + a1.intValue() + " = " + multi);
-                return multi;
+                result = a.doubleValue() * a1.doubleValue();
+                System.out.println(a.doubleValue() + " * " + a1.doubleValue() + " = " + result);
+                return Optional.of(result);
             }
             case Operator.DIVIDE: {
-                double div = ((double)a.intValue()) / a1.intValue();
-                System.out.println(a.intValue() + " / " + a1.intValue() + " = " + div);
-                return div;
+                if(a1.doubleValue() == 0) {
+                    System.out.println("0으로 나눌 수 없습니다.");
+                    return Optional.empty();
+                }
+                result = a.doubleValue() / a1.doubleValue();
+                System.out.println(a.doubleValue() + " / " + a1.doubleValue() + " = " + result);
+                return Optional.of(result);
             }
             default: {
-                return null;
+                return Optional.empty();
             }
         }
     }

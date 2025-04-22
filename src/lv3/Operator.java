@@ -4,5 +4,6 @@ public enum Operator {
     PLUS,
     MINUS,
     MULTIPLY,
-    DIVIDE
+    DIVIDE,
+    NONE;
 }
